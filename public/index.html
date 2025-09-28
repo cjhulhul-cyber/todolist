@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskCafe - 할 일 관리</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-coffee"></i>
+                    TaskCafe
+                </div>
+                <h1>TaskCafe</h1>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" title="테마 변경">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="todo-input-section">
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        placeholder="오늘 할 일을 추가해보세요..." 
+                        maxlength="200"
+                    >
+                    <select id="prioritySelect" class="priority-select">
+                        <option value="low">낮음</option>
+                        <option value="medium" selected>보통</option>
+                        <option value="high">높음</option>
+                    </select>
+                    <button id="addTodoBtn" class="add-btn">
+                        <i class="fas fa-plus"></i>
+                        추가
+                    </button>
+                </div>
+            </div>
+
+            <div class="filters-section">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        <i class="fas fa-list"></i>
+                        전체
+                    </button>
+                    <button class="filter-btn" data-filter="pending">
+                        <i class="fas fa-clock"></i>
+                        미완료
+                    </button>
+                    <button class="filter-btn" data-filter="completed">
+                        <i class="fas fa-check"></i>
+                        완료
+                    </button>
+                </div>
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="할 일 검색..."
+                        class="search-input"
+                    >
+                    <i class="fas fa-search search-icon"></i>
+                </div>
+            </div>
+
+            <div class="priority-filters">
+                <button class="priority-filter-btn active" data-priority="all">
+                    모든 우선순위
+                </button>
+                <button class="priority-filter-btn" data-priority="high">
+                    <span class="priority-indicator high"></span>
+                    높음
+                </button>
+                <button class="priority-filter-btn" data-priority="medium">
+                    <span class="priority-indicator medium"></span>
+                    보통
+                </button>
+                <button class="priority-filter-btn" data-priority="low">
+                    <span class="priority-indicator low"></span>
+                    낮음
+                </button>
+            </div>
+
+            <div class="todos-section">
+                <div class="todos-header">
+                    <div class="todos-count">
+                        <span id="totalCount">0</span>개의 할 일
+                        <span class="pending-count">(<span id="pendingCount">0</span>개 미완료)</span>
+                    </div>
+                    <div class="sort-controls">
+                        <select id="sortSelect" class="sort-select">
+                            <option value="created">생성순</option>
+                            <option value="priority">우선순위순</option>
+                            <option value="alphabetical">가나다순</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="todosList" class="todos-list">
+                    <!-- 할 일 목록이 여기에 동적으로 추가됩니다 -->
+                </div>
+
+                <div id="emptyState" class="empty-state">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>할 일이 없습니다</h3>
+                    <p>새로운 할 일을 추가해보세요!</p>
+                </div>
+            </div>
+        </main>
+
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>할 일 수정</h3>
+                    <button class="modal-close" id="modalClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="editInput" placeholder="할 일 내용" maxlength="200">
+                    <select id="editPrioritySelect" class="priority-select">
+                        <option value="low">낮음</option>
+                        <option value="medium">보통</option>
+                        <option value="high">높음</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancelEdit" class="btn-secondary">취소</button>
+                    <button id="saveEdit" class="btn-primary">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification">
+        <span id="notificationText"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

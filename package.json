@@ -1,0 +1,20 @@
+{
+  "name": "taskbox",
+  "version": "1.0.0",
+  "description": "A simple and elegant todo app with dark theme",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["todo", "task", "productivity", "dark-theme"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
